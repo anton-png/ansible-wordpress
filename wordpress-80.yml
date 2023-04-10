@@ -1,0 +1,26 @@
+---
+- name: Install nginx
+  hosts: all #staging_servers_ALL
+  become: yes
+  vars_files:
+    - vars/Vhosts-80.yml
+  roles:
+    - nginx
+
+  tasks:
+    - name: Activate config from Nginx
+      shell: | 
+        cp /etc/nginx/sites-enabled/194.58.90.166-80.conf /etc/nginx/sites-available/194.58.90.166-80.conf
+        ln -sf /etc/nginx/sites-available/194.58.90.166-80.conf /etc/nginx/sites-enabled/194.58.90.166-80.conf
+        systemctl restart nginx
+
+- name: Install PHP Wordpress Mysql
+  hosts: all
+  become: yes
+  vars_files:
+    - vars/Vhosts-80.yml
+    - vars/php-fpm.yml
+  roles:
+    - mysql
+    - wordpress
+    - php
