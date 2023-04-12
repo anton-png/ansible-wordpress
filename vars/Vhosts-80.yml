@@ -2,7 +2,7 @@
 server_name: "194.58.90.166"
 mysql_db: "wordpress"
 mysql_user: "wordpress"
-mysql_password: "Ghi~6v#jkbCV"
+mysql_password: "Ghi~36vhy$#jkbCV"
 
 nginx_vhosts:
   - listen: "80"

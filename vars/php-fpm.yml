@@ -1,11 +1,11 @@
 ---
 php_vebserver_daemon: "nginx"
+php_install_recommends: false
 php_memory_limit: "128M"
 php_max_execution_time: "90"
 php_upload_max_filesize: "256M"
 php_packages:
   - php-fpm
-  - php
   - php-cli
   - php-common
   - php-gd
@@ -13,9 +13,6 @@ php_packages:
   - php-pdo
   - php-xml
   - php-curl
-  - php-gd
-  - php-mbstring
-  - php-xml
   - php-xmlrpc
   - php-soap
   - php-intl
