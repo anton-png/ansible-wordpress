@@ -1,0 +1,17 @@
+---
+# PHP packages for Debian
+
+php_packages:
+  - php-fpm
+  - php-cli
+  - php-common
+  - php-gd
+  - php-mbstring
+  - php-pdo
+  - php-xml
+  - php-curl
+  - php-xmlrpc
+  - php-soap
+  - php-intl
+  - php-zip
+  - php-mysql

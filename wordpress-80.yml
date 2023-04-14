@@ -1,26 +1,25 @@
 ---
-- name: Install nginx
-  hosts: staging_servers_ALL 
+- name: Install LEMP and Wordpress
+  hosts: staging_servers_ALL
   become: yes
   vars_files:
     - vars/Vhosts-80.yml
-    - vars/php-fpm.yml
+
+  pre_tasks:
+  - name: Include PHP packages (If Debian)
+    include_vars:
+      file: vars/Debian-php-packages.yml
+    when: ansible_os_family == "Debian"
+
+  - name: Include PHP packages (If RedHat)
+    include_vars:
+      file: vars/RedHat-php-packages.yml
+    when: ansible_os_family == "RedHat"
+
   roles:
     - nginx
-  tasks:
-    - name: Activate config from Nginx
-      shell: | 
-        cp /etc/nginx/sites-enabled/{{ server_name }}-80.conf /etc/nginx/sites-available/{{ server_name }}-80.conf
-        ln -sf /etc/nginx/sites-available/{{ server_name }}-80.conf /etc/nginx/sites-enabled/{{ server_name }}-80.conf
-        systemctl restart nginx
-
-- name: Install PHP Wordpress Mysql
-  hosts: staging_servers_ALL 
-  become: yes
-  vars_files:
-    - vars/Vhosts-80.yml
-    - vars/php-fpm.yml
-  roles:
     - mysql
     - wordpress
     - php
+
+
