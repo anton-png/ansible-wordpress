@@ -13,7 +13,6 @@
     src: https://wordpress.org/latest.tar.gz
     dest: "/var/www/{{ server_name }}"
     remote_src: yes
-#    creates: "/var/www/{{ server_name }}/wordpress"
 
 # Setup/install tasks.
 - include_tasks: setup-RedHat.yml
