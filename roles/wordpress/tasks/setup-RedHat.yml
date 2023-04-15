@@ -1,11 +1,9 @@
 ---
 # WordPress Configuration
-
 - name: Set ownership
   file:
     path: "/var/www/{{ server_name }}"
     state: directory
     recurse: yes
-    owner: nginx
-    group: nginx
-
+    owner: "{{ wp_owner }}" # nginx | apache
+    group: "{{ wp_group }}" # nginx | apache

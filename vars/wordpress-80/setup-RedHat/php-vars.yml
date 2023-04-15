@@ -1,6 +1,8 @@
 ---
-# PHP packages for RedHat
+php_fpm_pool_user: nginx
+php_fpm_pool_group: nginx
 
+# PHP packages for RedHat
 php_packages:
   - php-fpm
   - php-cli
@@ -22,3 +24,4 @@ php_packages:
   - php-intl
   - php-zip
   - php-mysqlnd
+  - php-json

@@ -1,6 +1,8 @@
 ---
-# PHP packages for Debian
+php_fpm_pool_user: www-data
+php_fpm_pool_group: www-data
 
+# PHP packages for Debian
 php_packages:
   - php-fpm
   - php-cli

@@ -3,17 +3,21 @@
   hosts: staging_servers_ALL
   become: yes
   vars_files:
-    - vars/Vhosts-80.yml
+    - vars/wordpress-80/main.yml
 
   pre_tasks:
-  - name: Include PHP packages (If Debian)
+  - name: Include vars for Debian (If Debian)
     include_vars:
-      file: vars/Debian-php-packages.yml
+      dir: vars/wordpress-80/setup-Debian
+      extensions:
+        - 'yml'
     when: ansible_os_family == "Debian"
 
-  - name: Include PHP packages (If RedHat)
+  - name: Include vars for RedHat (If RedHat)
     include_vars:
-      file: vars/RedHat-php-packages.yml
+      dir: vars/wordpress-80/setup-RedHat
+      extensions:
+        - 'yml'
     when: ansible_os_family == "RedHat"
 
   roles:

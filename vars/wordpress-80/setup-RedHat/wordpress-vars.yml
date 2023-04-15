@@ -1,0 +1,3 @@
+---
+wp_owner: nginx 
+wp_group: nginx

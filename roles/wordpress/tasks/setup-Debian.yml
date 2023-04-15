@@ -1,9 +1,8 @@
 ---
-
 - name: Set ownership
   file:
     path: "/var/www/{{ server_name }}"
     state: directory
     recurse: yes
-    owner: www-data
-    group: www-data
+    owner: "{{ wp_owner }}" # nginx | www-data
+    group: "{{ wp_group }}" # nginx | www-data
